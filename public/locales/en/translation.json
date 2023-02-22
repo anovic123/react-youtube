@@ -1,0 +1,14 @@
+{
+  "sidebar": {
+    "cat1": "New",
+    "cat2": "Comedy",
+    "cat3": "Movies",
+    "cat4": "Games",
+    "cat5": "Music",
+    "cat6": "Live",
+    "cat7": "Sport"
+  },
+  "header": {
+    "placeholder": "Search"
+  }
+}

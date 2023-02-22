@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  outline: none;
+  transition: 0.3s all;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  color: #fff;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  outline: none;
+  transition: 0.3s all;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  color: #fff;
+}
+
+body {
+  background: #0f0f0f;
+}
+
+button,
+input {
+  cursor: pointer;
+}
+
+#root {
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}

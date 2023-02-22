@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 21;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+.headerLogo svg {
+  font-size: 40px;
+  fill: #ff0000;
+}
+.headerLogo {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.headerSwitcher svg {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.burgerMenuIcon {
+  fill: #fff;
+  font-size: 27px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
+}
+
+.burgerMenuIcon:hover {
+  background: #272727;
+}

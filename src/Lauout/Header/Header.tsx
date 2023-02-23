@@ -25,7 +25,9 @@ export const Header: React.FC<HeaderProps> = ({ handleOpen }) => {
           <span className={s.headerSwitcher}>
             <SwitchLang />
           </span>
-          <BsLamp />
+          <span className={s.headerTheme}>
+            <BsLamp />
+          </span>
         </div>
       </header>
     </>

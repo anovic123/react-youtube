@@ -39,7 +39,7 @@ input {
 }
 
 .app {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  margin: 90px auto 0 auto;
   padding: 0 10px;
 }

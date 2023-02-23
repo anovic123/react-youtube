@@ -7,7 +7,9 @@
   left: 0px;
   top: 0px;
   padding: 0 20px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  background: #0f0f0f;
   z-index: 21;
 }
 
@@ -35,8 +37,8 @@
   font-weight: 700;
 }
 
-.headerSwitcher svg {
-  font-size: 40px;
+.headerTheme svg {
+  font-size: 28px;
   cursor: pointer;
 }
 

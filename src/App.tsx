@@ -6,14 +6,11 @@ import { GlobalRouting } from './routing/GlobalRouting';
 import './utils/i18n';
 
 function App() {
-
   return (
     <>
       <HashRouter>
         <Suspense fallback={'Loading...'}>
-          <Layout>
-            <GlobalRouting />
-          </Layout>
+          <GlobalRouting />
         </Suspense>
       </HashRouter>
     </>

@@ -15,7 +15,7 @@ export const HomeVideo: React.FC<any> = ({ video }) => {
         </div>
         <div className={s.videoInfo}>
           <h2 className={s.videoTitle}>{titleSlice(video.video.title)}</h2>
-          <div className={s.otherInfo}>{convertViews(video.video.stats.views)}</div>
+          <div className={s.otherInfo}>{convertViews(video.video.stats.views)} просмотров</div>
         </div>
       </div>
     </Link>

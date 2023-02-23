@@ -1,15 +1,10 @@
 .sidebar {
-  display: none;
-}
-
-.sidebar.open {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   position: fixed;
   top: 10px;
   left: 0;
-  width: 280px;
   height: 100%;
   background: #0f0f0f;
   border-radius: 10px;
@@ -17,7 +12,16 @@
   padding-top: 50px;
 }
 
-.background {
+.big {
+  width: 280px;
+}
+
+.small {
+  width: 120px;
+}
+
+.small .nav a {
+  width: auto;
 }
 
 .nav {

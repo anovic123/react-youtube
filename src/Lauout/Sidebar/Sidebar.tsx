@@ -18,7 +18,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ open, handleOpen }) => {
-  const sidebarClass = s.sidebar + (open ? ' ' + s.open : '');
+  const sidebarClass = s.sidebar + (!open ? ' ' + s.small : ' ' + s.big);
 
   const { t } = useTranslation();
 
@@ -29,36 +29,62 @@ export const Sidebar: FC<SidebarProps> = ({ open, handleOpen }) => {
           <GrClose />
         </button> */}
 
-        <nav className={s.nav}>
-          <Link to="" className={s.active}>
-            <AiFillHome />
-            <span>{t('sidebar.cat1')}</span>
-          </Link>
-          <Link to="">
-            <MdTheaterComedy />
-            <span>{t('sidebar.cat2')}</span>
-          </Link>
-          <Link to="">
-            <MdLocalMovies />
-            <span>{t('sidebar.cat3')}</span>
-          </Link>
-          <Link to="">
-            <CgGames />
-            <span>{t('sidebar.cat4')}</span>
-          </Link>
-          <Link to="">
-            <FaMusic />
-            <span>{t('sidebar.cat5')}</span>
-          </Link>
-          <Link to="">
-            <RiLiveFill />
-            <span>{t('sidebar.cat6')}</span>
-          </Link>
-          <Link to="">
-            <MdSportsBaseball />
-            <span>{t('sidebar.cat7')}</span>
-          </Link>
-        </nav>
+        {open ? (
+          <nav className={s.nav}>
+            <Link to="" className={s.active}>
+              <AiFillHome />
+              <span>{t('sidebar.cat1')}</span>
+            </Link>
+            <Link to="">
+              <MdTheaterComedy />
+              <span>{t('sidebar.cat2')}</span>
+            </Link>
+            <Link to="">
+              <MdLocalMovies />
+              <span>{t('sidebar.cat3')}</span>
+            </Link>
+            <Link to="">
+              <CgGames />
+              <span>{t('sidebar.cat4')}</span>
+            </Link>
+            <Link to="">
+              <FaMusic />
+              <span>{t('sidebar.cat5')}</span>
+            </Link>
+            <Link to="">
+              <RiLiveFill />
+              <span>{t('sidebar.cat6')}</span>
+            </Link>
+            <Link to="">
+              <MdSportsBaseball />
+              <span>{t('sidebar.cat7')}</span>
+            </Link>
+          </nav>
+        ) : (
+          <nav className={s.nav}>
+            <Link to="" className={s.active}>
+              <AiFillHome />
+            </Link>
+            <Link to="">
+              <MdTheaterComedy />
+            </Link>
+            <Link to="">
+              <MdLocalMovies />
+            </Link>
+            <Link to="">
+              <CgGames />
+            </Link>
+            <Link to="">
+              <FaMusic />
+            </Link>
+            <Link to="">
+              <RiLiveFill />
+            </Link>
+            <Link to="">
+              <MdSportsBaseball />
+            </Link>
+          </nav>
+        )}
       </aside>
     </>
   );

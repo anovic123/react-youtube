@@ -6,7 +6,7 @@ export const convertDuration = (total: number) => {
 };
 
 export const convertViews = (total: number) => {
-  const units = ['', 'тысячи', 'миллиона', 'миллиарда', 'триллиона'];
+  const units = ['', 'тыс.', 'млн', 'млрд', 'трлн'];
   let i = 0;
   while (total >= 1000 && i < units.length - 1) {
     total /= 1000;

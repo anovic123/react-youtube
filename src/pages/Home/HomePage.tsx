@@ -16,18 +16,24 @@ export interface IVideo {
 export const HomePage = () => {
   const [videos, setVideos] = React.useState([]);
 
-  useEffect(() => {
-    relatedContents().then((el) => {
-      setVideos(el.data.contents);
-    });
-  }, []);
-  // console.log(videos);
+  // useEffect(() => {
+  //   relatedContents().then((el) => {
+  //     setVideos(el.data.contents);
+  //   });
+  // }, []);
+  console.log(videos);
+
+  // useEffect(() => {
+  //   videoInfo(``).then((el) => {
+  //     setVideos(el.data.data)
+  //   })
+  // })
 
   return (
     <>
       <div className={s.wrapper}>
         {videos.map((vid: IVideo) => (
-          <HomeVideo key={v1()} video={vid}/>
+          <HomeVideo key={v1()} video={vid} />
         ))}
       </div>
     </>

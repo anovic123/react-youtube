@@ -3,11 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC = () => {
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(!open);
 
@@ -21,7 +17,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Header handleOpen={handleOpen} />
       <main className="app">
         <Sidebar open={open} handleOpen={handleOpen} />
-        <div>{children}</div>
+        <div>
+          <Outlet />
+        </div>
       </main>
     </>
   );

@@ -1,9 +1,11 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { v1 } from 'uuid';
 import relatedContents from '../../api/youtube-videos';
 import { HomeVideo } from '../../components/HomeVideo/HomeVideo';
+import { Loader } from '../../components/Loader/Loader';
 
-import s from './HomePage.module.css';
+import s from './HomePage.module.scss';
 
 export interface IVideo {
   videoId: string;
@@ -15,26 +17,20 @@ export interface IVideo {
 
 export const HomePage = () => {
   const [videos, setVideos] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  // useEffect(() => {
-  //   relatedContents().then((el) => {
-  //     setVideos(el.data.contents);
-  //   });
-  // }, []);
-  console.log(videos);
-
-  // useEffect(() => {
-  //   videoInfo(``).then((el) => {
-  //     setVideos(el.data.data)
-  //   })
-  // })
-
+  useEffect(() => {
+    setIsLoading(true);
+    relatedContents().then((el) => {
+      setVideos(el.data.contents);
+      setIsLoading(false);
+    });
+  }, []);
+  
   return (
     <>
       <div className={s.wrapper}>
-        {videos.map((vid: IVideo) => (
-          <HomeVideo key={v1()} video={vid} />
-        ))}
+        {isLoading ? <Loader /> : videos.map((vid: IVideo) => <HomeVideo key={v1()} video={vid} />)}
       </div>
     </>
   );

@@ -1,0 +1,60 @@
+.sidebar {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  background: #0f0f0f;
+  border-radius: 10px;
+  z-index: 20;
+  padding-top: 50px;
+  .big {
+    width: 250px;
+  }
+  .small {
+    width: 120px;
+    .nav a {
+      width: auto;
+    }
+  }
+  .nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 20px 0 20px;
+    align-items: flex-start;
+    a {
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+      margin-top: 20px;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      padding: 10px;
+      font-size: 22px;
+      line-height: 27px;
+      color: #fff;
+      text-decoration-line: none;
+      width: 100%;
+      &:hover {
+        background: #272727;
+        border-radius: 10px;
+      }
+      svg {
+        font-size: 27px;
+      }
+    }
+  }
+}
+
+.nav a.active {
+  background: #272727;
+  border-radius: 10px;
+}
+
+.nav a.active svg {
+  fill: rgb(194, 22, 22);
+}

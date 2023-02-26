@@ -1,0 +1,87 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  column-gap: 20px;
+  display: flex;
+  padding-top: 1em;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgba(26, 24, 47, 0.15);
+    border-radius: 5px;
+    height: 100%;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #1a182f;
+    border-radius: 5px;
+  }
+  .videoWrapper {
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    .player {
+      width: 100%;
+      height: auto;
+    }
+    .videoInfo {
+      width: 100%;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      row-gap: 5px;
+      padding: 15px 1em;
+      h3 {
+        font-size: 29px;
+        font-weight: 600;
+      }
+      .videoChanelWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        .videoWrapp {
+          display: flex;
+          gap: 10px;
+          .videoAccount {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: contain;
+          }
+          .videoChannelTitle {
+            font-size: 24px;
+          }
+        }
+        .videoStats {
+          display: flex;
+          align-items: center;
+          gap: 40px;
+          .videoStatsLikes {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .videoLike {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-size: 18px;
+              svg {
+                font-size: 23px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .videoRecomendation {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}

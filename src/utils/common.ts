@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 export const convertDuration = (total: number) => {
   const minutes = total % 60;
   const hours = Math.floor(total / 60);
@@ -6,7 +8,8 @@ export const convertDuration = (total: number) => {
 };
 
 export const convertViews = (total: number) => {
-  const units = ['', 'тыс.', 'млн', 'млрд', 'трлн'];
+  const { t } = useTranslation();
+  const units = ['', t("utils.util1"), t("utils.util2"), t("utils.util3"), t("utils.util4")];
   let i = 0;
   while (total >= 1000 && i < units.length - 1) {
     total /= 1000;
@@ -16,8 +19,8 @@ export const convertViews = (total: number) => {
 }
 
 export const titleSlice = ( title: any) => {
-  const isFull = title.length < 60;
-  const fullText = !isFull ? `${title.slice(0, 60)}...` : title;
+  const isFull = title.length < 55;
+  const fullText = !isFull ? `${title.slice(0, 55)}...` : title;
 
   return fullText
 }

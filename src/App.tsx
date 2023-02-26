@@ -1,18 +1,17 @@
-import axios from 'axios';
-import React, { Suspense } from 'react';
-import { Routes, Route, HashRouter } from 'react-router-dom';
-import { Layout } from './Lauout/Layout';
+import { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { GlobalRouting } from './routing/GlobalRouting';
+import { Loader } from './components/Loader/Loader';
 import './utils/i18n';
 
 function App() {
   return (
     <>
-      <HashRouter>
-        <Suspense fallback={'Loading...'}>
+      <BrowserRouter>
+        <Suspense fallback={<Loader />}>
           <GlobalRouting />
         </Suspense>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }

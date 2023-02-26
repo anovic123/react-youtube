@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IVideo } from '../../pages/Home/HomePage';
+import { useTranslation } from 'react-i18next';
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 
-import s from './HomeVideo.module.css';
+import s from './HomeVideo.module.scss';
 
 export const HomeVideo: React.FC<any> = ({ video }) => {
+  const { t } = useTranslation();
+
   return (
     <Link to={`/watch/${video.video.videoId}`}>
       <div className={s.container}>
@@ -15,7 +17,9 @@ export const HomeVideo: React.FC<any> = ({ video }) => {
         </div>
         <div className={s.videoInfo}>
           <h2 className={s.videoTitle}>{titleSlice(video.video.title)}</h2>
-          <div className={s.otherInfo}>{convertViews(video.video.stats.views)} просмотров</div>
+          <div className={s.otherInfo}>
+            {convertViews(video.video.stats.views)} {t('words.word1')}
+          </div>
         </div>
       </div>
     </Link>

@@ -10,5 +10,14 @@
   },
   "header": {
     "placeholder": "Search"
+  },
+  "utils": {
+    "util1": "thnd",
+    "util2": "mln",
+    "util3": "bln",
+    "util4": "trl"
+  }, 
+  "words": {
+    "word1": "views"
   }
 }

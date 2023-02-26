@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+  background: #0f0f0f;
+  z-index: 21;
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    .burgerMenuIcon {
+      fill: #fff;
+      font-size: 27px;
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      transition: all 0.5s ease 0s;
+      &:hover {
+        background: #272727;
+      }
+    }
+    .headerLogo {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 23px;
+      font-weight: 700;
+      svg {
+        font-size: 40px;
+        fill: #ff0000;
+      }
+    }
+  }
+  .headerRight {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    .headerTheme svg {
+      font-size: 28px;
+      cursor: pointer;
+    }
+  }
+}

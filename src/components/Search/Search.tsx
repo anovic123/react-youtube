@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsSearch } from 'react-icons/bs';
 
-import s from './Search.module.css';
+import s from './Search.module.scss';
 
 export const Search = () => {
   const { t } = useTranslation();

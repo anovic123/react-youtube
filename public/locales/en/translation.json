@@ -22,5 +22,11 @@
   },
   "search": {
     "search1": "Search Results for"
+  },
+  "errorPage": {
+    "span": "Error 404",
+    "h2": "Page not found",
+    "p": "The address was entered incorrectly or the page no longer exists on the site.",
+    "button": "Go to home page"
   }
 }

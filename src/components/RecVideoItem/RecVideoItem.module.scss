@@ -33,17 +33,21 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     .videoTitle {
       font-family: 'Roboto';
       font-size: 14.4px;
       font-weight: 500;
       overflow: hidden;
+      margin-bottom: 5px;
+      &:hover {
+        color: red;
+      }
     }
     .channelTitle {
       font-family: 'Roboto';
       font-size: 13px;
+      margin-bottom: 5px;
     }
     .videoViews {
       font-size: 12px;

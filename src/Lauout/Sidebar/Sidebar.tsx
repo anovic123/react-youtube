@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -20,15 +20,11 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = ({ open, handleOpen }) => {
   const sidebarClass = s.sidebar + (!open ? ' ' + s.small : ' ' + s.big);
-  // const [category, setCategory] = React.useState<any>('Comedy');
+  const [category, setCategory] = React.useState<string>('');
 
   const { t } = useTranslation();
 
-  // React.useEffect(() => {
-  //   youtubeCategory(category).then((el: any) => {
-  //     console.log(el);
-  //   });
-  // }, [category]);
+
 
   return (
     <>

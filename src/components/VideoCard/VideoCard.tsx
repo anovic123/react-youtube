@@ -33,7 +33,7 @@ interface DataProps {
 }
 
 export const VideoCard: React.FC<DataProps> = ({ data }) => {
-  // console.log(data);
+  console.log(data);
   return (
     <div className={s.container}>
       <Link to={`/watch/${data.video.videoId}`}>
@@ -50,9 +50,7 @@ export const VideoCard: React.FC<DataProps> = ({ data }) => {
         <div className={s.videoDate}></div>
         <Link to="#">
           <div className={s.videoChannel}>
-            <img
-              src={data.video.author.avatar[0].url}
-            />
+            <img src={data.video.author.avatar[0].url} />
             <div className={s.videoChannelTitle}>{data.video.author.title}</div>
           </div>
         </Link>

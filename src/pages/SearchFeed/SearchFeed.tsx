@@ -7,6 +7,7 @@ import { v1 } from 'uuid';
 
 import s from './SearchFeed.module.scss';
 import { VideoCard } from '../../components/VideoCard/VideoCard';
+import { useTranslation } from 'react-i18next';
 
 export const SearchFeed = () => {
   const [result, setResult] = useState<any>([]);
@@ -14,10 +15,11 @@ export const SearchFeed = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { searchTerm } = useParams();
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     document.title = `${result} - YouTube`;
     setIsLoading(true);
-    // youtubeSearch(`${searchTerm}`).then((response: any) => setResult(response.data));
     youtubeSearch(`${searchTerm}`)
       .then((response) => {
         setResult([...response.data.contents]);
@@ -33,24 +35,24 @@ export const SearchFeed = () => {
     };
   }, [searchTerm]);
 
-  // console.log(result);
+  console.log(result);
   // console.log(pageToken);
-
+  const videos = result.filter((r: any) => r.type === 'video')
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
         <h3 style={{ marginBottom: 20, color: 'red' }}>
-          Search Results for: <span>{searchTerm}</span>
+          {t('search.search1')} <span>{searchTerm}</span>
         </h3>
         {isLoading ? (
           <Loader />
         ) : (
-          result.map((r: any) => (
+          videos.map((v: any) => (
             <div>
-              {<VideoCard key={v1()} data={r} />}
-              {/* {r.type.channel && <div key={v1()}>{r.type.channel}</div>} */}
+              <VideoCard key={v1()} data={v} />
             </div>
           ))
+          
         )}
       </div>
     </div>

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsSearch } from 'react-icons/bs';
+import { AiOutlineClose } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
 import s from './Search.module.scss';
@@ -16,6 +17,14 @@ export const Search = () => {
 
   const { t } = useTranslation();
 
+  useEffect(() => {
+    localStorage.setItem('searchValue', value);
+  }, [value]);
+
+  const handleClearSearch = () => {
+    setValue('');
+  };
+
   return (
     <div>
       <form className={s.searchForm} onClick={handleSubmit}>
@@ -29,6 +38,7 @@ export const Search = () => {
         <span className={s.searchIcon} onClick={handleSubmit}>
           <BsSearch />
         </span>
+        {value && <AiOutlineClose className={s.searchClose} onClick={handleClearSearch} />}
       </form>
     </div>
   );

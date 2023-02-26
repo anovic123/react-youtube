@@ -19,5 +19,8 @@
   }, 
   "words": {
     "word1": "views"
+  },
+  "search": {
+    "search1": "Search Results for"
   }
 }

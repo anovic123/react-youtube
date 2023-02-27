@@ -8,9 +8,10 @@ import { v1 } from 'uuid';
 import s from './SearchFeed.module.scss';
 import { VideoCard } from '../../components/VideoCard/VideoCard';
 import { useTranslation } from 'react-i18next';
+import { DataProps } from '../../types/Search';
 
 export const SearchFeed = () => {
-  const [result, setResult] = useState<any>([]);
+  const [result, setResult] = useState<DataProps[]>([]);
   const [pageToken, setPageToken] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { searchTerm } = useParams();

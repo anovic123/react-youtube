@@ -15,6 +15,11 @@
     border-radius: 15px 0px 0px 15px;
     position: relative;
     background: #121212;
+    &:focus {
+      width: 400px;
+      outline: none;
+      border: 1px solid rgb(42, 163, 255);
+    }
   }
   .searchIcon {
     display: flex;
@@ -28,12 +33,9 @@
     border-radius: 0 10px 10px 0;
     padding: 5px 15px;
     height: 40px;
-  }
-
-  .searchInput:focus {
-    width: 400px;
-    outline: none;
-    border: 1px solid rgb(42, 163, 255);
+    &:focus {
+      border: 1px solid rgb(42, 163, 255);
+    }
   }
 
   .searchInput:placeholder {

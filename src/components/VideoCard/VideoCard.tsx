@@ -1,36 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { DataProps } from '../../types/Search';
 
 import s from './VideoCard.module.scss';
-
-type ThumbnailsProps = {
-  url: string;
-  width: string;
-  height: string;
-};
-
-type AvatarProps = {
-  url: string;
-  width: number;
-  height: number;
-};
-
-interface DataProps {
-  data: {
-    video: {
-      descriptionSnippet: string;
-      lengthSeconds: number;
-      title: string;
-      videoId: string;
-      thumbnails: ThumbnailsProps[];
-      author: {
-        avatar: AvatarProps[];
-        title: string;
-        channelId: string;
-      };
-    };
-  };
-}
 
 export const VideoCard: React.FC<DataProps> = ({ data }) => {
   console.log(data);

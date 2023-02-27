@@ -40,6 +40,9 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       height: 45px;
+      &:hover {
+        color: red;
+      }
     }
 
     .otherInfo {

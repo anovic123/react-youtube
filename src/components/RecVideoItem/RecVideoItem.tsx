@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IVideo } from '../../types/Video';
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 
 import s from './RecVideoItem.module.scss';
 
 export const RecVideoItem: React.FC<any> = ({ data }) => {
   const d = data.video;
+  console.log(data);
 
   const videoDur = convertDuration(Number(d.lengthSeconds));
   const viewsCount = convertViews(Number(d.stats.views));

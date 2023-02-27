@@ -1,22 +1,16 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import { domainToUnicode } from 'url';
 import { v1 } from 'uuid';
 import relatedContents from '../../api/youtube-videos';
 import { HomeVideo } from '../../components/HomeVideo/HomeVideo';
 import { Loader } from '../../components/Loader/Loader';
+import { IVideo } from '../../types/Video';
 
 import s from './HomePage.module.scss';
 
-export interface IVideo {
-  videoId: string;
-  thumbnails: Array<any>;
-  lengthSeconds: number;
-  title: string;
-  views: number;
-}
-
 export const HomePage = () => {
-  const [videos, setVideos] = React.useState([]);
+  const [videos, setVideos] = React.useState<IVideo[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   useEffect(() => {
@@ -25,6 +19,12 @@ export const HomePage = () => {
       setVideos(el.data.contents);
       setIsLoading(false);
     });
+
+    document.title = 'YouTube - Main Page';
+
+    return () => {
+      document.title = 'YouTube'
+    }
   }, []);
   
   return (

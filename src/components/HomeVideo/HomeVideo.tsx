@@ -5,6 +5,7 @@ import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 
 import s from './HomeVideo.module.scss';
 
+
 export const HomeVideo: React.FC<any> = ({ video }) => {
   const { t } = useTranslation();
 

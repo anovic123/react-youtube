@@ -8,12 +8,12 @@
   padding-top: 1em;
   &::-webkit-scrollbar {
     width: 5px;
-    background-color: rgba(26, 24, 47, 0.15);
+    background-color: #0f0f0f;
     border-radius: 5px;
     height: 100%;
   }
   &::-webkit-scrollbar-thumb {
-    background: #1a182f;
+    background: #0f0f0f;
     border-radius: 5px;
   }
   .videoWrapper {
@@ -83,5 +83,18 @@
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    max-height: 790px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 5px;
+      background: #0f0f0f;
+      border-radius: 5px;
+      height: 100%;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #f50505;
+      border-radius: 5px;
+    }
   }
 }

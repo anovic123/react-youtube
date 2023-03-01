@@ -9,10 +9,10 @@ import { VideoPage } from '../pages/Video/VideoPage';
 const PATH = {
   LAYOUT: '/',
   HOME_PAGE: '',
-  VIDEO_PAGE: '/watch:id',
+  VIDEO_PAGE: '/watch/:id',
   SEARCH_FEED: '/search/:searchTerm',
-  ERROR_PAGE: '*'
-}
+  ERROR_PAGE: '*',
+};
 
 export const GlobalRouting = () => {
   return (

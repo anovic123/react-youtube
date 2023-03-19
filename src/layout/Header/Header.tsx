@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { SwitchLang } from '../../components/SwitchLang/SwitchLang';
+import { SwitchLang } from '../../components/switch-lang';
 import { BsYoutube, BsLamp } from 'react-icons/bs';
-import { Search } from '../../components/Search/Search';
+import { Search } from '../../components/search';
 import { Link } from 'react-router-dom';
 
 import s from './Header.module.scss';

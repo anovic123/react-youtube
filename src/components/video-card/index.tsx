@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DataProps } from '../../types/Search';
 
-import s from './VideoCard.module.scss';
+import s from './style.module.scss';
 
 export const VideoCard: React.FC<DataProps> = ({ data }) => {
   console.log(data);

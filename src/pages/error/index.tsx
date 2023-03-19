@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
 import error from '../../assets/images/404.png';
 
-import s from './ErrorPage.module.scss';
+import s from './style.module.scss';
 
 export const ErrorPage = () => {
   useEffect(() => {
@@ -18,7 +19,7 @@ export const ErrorPage = () => {
 
   return (
     <div className={s.container}>
-      <img src={error} alt="Error page"/>
+      <img src={error} alt="Error page" />
       <br />
       <span>{t('errorPage.span')}</span>
       <h2>{t('errorPage.h2')}</h2>

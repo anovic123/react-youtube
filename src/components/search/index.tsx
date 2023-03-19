@@ -4,7 +4,7 @@ import { BsSearch } from 'react-icons/bs';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
-import s from './Search.module.scss';
+import s from './style.module.scss';
 
 export const Search = () => {
   const [value, setValue] = useState<string>('');

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { IVideo } from '../../types/Video';
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 
-import s from './RecVideoItem.module.scss';
+import s from './style.module.scss';
 
 export const RecVideoItem: React.FC<any> = ({ data }) => {
   const d = data.video;

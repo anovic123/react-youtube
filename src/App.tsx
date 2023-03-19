@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalRouting } from './routing/GlobalRouting';
-import { Loader } from './components/Loader/Loader';
+import { Loader } from './components/loader';
 import './utils/i18n';
 
 function App() {

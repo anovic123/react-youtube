@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import s from './SwitchLang.module.scss';
+import s from './style.module.scss';
 
 export const SwitchLang = () => {
   const { i18n } = useTranslation();

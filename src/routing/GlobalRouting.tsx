@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from '../Lauout/Layout';
-import { ErrorPage } from '../pages/Error/ErrorPage';
-import { HomePage } from '../pages/Home/HomePage';
-import { SearchFeed } from '../pages/SearchFeed/SearchFeed';
-import { VideoPage } from '../pages/Video/VideoPage';
+import { Layout } from '../layout';
+import { ErrorPage } from '../pages/error';
+import { HomePage } from '../pages/home';
+import { SearchFeed } from '../pages/search-feed';
+import { VideoPage } from '../pages/video';
 
 const PATH = {
   LAYOUT: '/',

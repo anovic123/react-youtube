@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { v1 } from 'uuid';
-import { convertViews } from '../../utils/common';
-import youtubeVideoinfo from '../../api/youtube-videoinfo';
-import youtubeRelatedContent from '../../api/youtube-related-contents';
-import { HiOutlineThumbUp } from 'react-icons/hi';
-import { RecVideoItem } from '../../components/RecVideoItem/RecVideoItem';
+import ReactPlayer from 'react-player';
 
-import s from './VideoPage.module.scss';
-import { Loader } from '../../components/Loader/Loader';
+import { HiOutlineThumbUp } from 'react-icons/hi';
+
+import { RecVideoItem, Loader } from '../../components';
+
+import getVideoInfo from '../../api/youtube-video-info';
+import youtubeRelatedContent from '../../api/youtube-related-contents';
+
+import { convertViews } from '../../utils/common';
+
+import s from './style.module.scss';
 
 export const VideoPage = () => {
   const [data, setData] = useState<any>({});
@@ -20,44 +23,41 @@ export const VideoPage = () => {
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    youtubeVideoinfo(videoId)
-      .then((response: any) => {
-        setIsLoading(true);
-        document.title = `${response.data.title} - YouTube`;
-        setData(response.data);
-        // console.log(response.data);
-      })
-      .catch((error: Error) => {
-        console.error(error.message);
-      })
-      .finally(() => setIsLoading(false));
+  // useEffect(() => {
+  //   if (!videoId) return;
+  //   getVideoInfo(videoId)
+  //     .then((response: any) => {
+  //       setIsLoading(true);
+  //       document.title = `${response.data.title} - YouTube`;
+  //       setData(response.data);
+  //     })
+  //     .catch((error: Error) => {
+  //       console.error(error.message);
+  //     })
+  //     .finally(() => setIsLoading(false));
 
-    return () => {
-      document.title = 'YouTube';
-    };
-  }, []);
+  //   return () => {
+  //     document.title = 'YouTube';
+  //   };
+  // }, [videoId]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    youtubeRelatedContent(videoId)
-      .then((response: any) => {
-        setRecVideos(response.data.contents);
-      })
-      .catch((error: Error) => {
-        console.error(error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [videoId]);
+  // useEffect(() => {
+  //   if (!videoId) return;
+  //   setIsLoading(true);
+  //   youtubeRelatedContent(videoId)
+  //     .then((response: any) => {
+  //       setRecVideos(response.data.contents);
+  //     })
+  //     .catch((error: Error) => {
+  //       console.error(error.message);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // }, [videoId]);
 
-  // console.log(videoId);
-
-  // console.log(recVideos);
-
-  const viewsCount = convertViews(Number(data.stats?.views));
-  const likesCount = convertViews(Number(data.stats?.likes));
+  const viewsCount = convertViews(Number(data?.stats?.views));
+  const likesCount = convertViews(Number(data?.stats?.likes));
 
   return (
     <div className={s.container}>
@@ -77,7 +77,7 @@ export const VideoPage = () => {
           </span>
           <Link to="#">
             <div className={s.videoChanelWrapper}>
-              <div className={s.videoWrapp}>
+              <div className={s.videoWrapper}>
                 <img
                   src={
                     data?.author?.avatar[0]?.url ||

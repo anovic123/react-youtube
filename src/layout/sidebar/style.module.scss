@@ -4,16 +4,14 @@
   justify-content: center;
   position: fixed;
   top: 10px;
-  left: 0;
+  left: 10px;
   height: 100%;
   background: #0f0f0f;
   border-radius: 10px;
   z-index: 20;
   padding-top: 50px;
-  .big {
-    width: 250px;
-  }
   .small {
+    transition: width 5s ease 0s;
     width: 120px;
     .nav a {
       width: auto;
@@ -23,7 +21,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0px 20px 0 20px;
+    padding: 0px 10px 0 10px;
     align-items: flex-start;
     a {
       cursor: pointer;

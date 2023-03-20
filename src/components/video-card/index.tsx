@@ -5,7 +5,6 @@ import { DataProps } from '../../types/Search';
 import s from './style.module.scss';
 
 export const VideoCard: React.FC<DataProps> = ({ data }) => {
-  console.log(data);
   return (
     <div className={s.container}>
       <Link to={`/watch/${data.video.videoId}`}>

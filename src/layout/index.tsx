@@ -15,7 +15,9 @@ export const Layout: FC = () => {
       <Header handleOpen={handleOpen} />
       <main className="app">
         {!isMobile && <Sidebar open={open} handleOpen={handleOpen} />}
-        <Outlet />
+        <div className="content">
+          <Outlet />
+        </div>
       </main>
     </>
   );

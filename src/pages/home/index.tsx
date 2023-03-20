@@ -27,33 +27,33 @@ export const HomePage = () => {
 
   let cancelRequest = false;
 
-  // useEffect(() => {
-  //   document.title = 'YouTube - Main Page';
+  useEffect(() => {
+    document.title = 'YouTube - Main Page';
 
-  //   const fetchData = async () => {
-  //     try {
-  //       const response: ApiResponse = await getVideos();
+    const fetchData = async () => {
+      try {
+        const response: ApiResponse = await getVideos();
 
-  //       if (!cancelRequest) {
-  //         // @ts-ignore
-  //         setVideos(response.contents);
-  //         setIsLoading(false);
-  //       }
-  //     } catch (error: any) {
-  //       console.error(error);
-  //       setError(error.message);
-  //       setIsLoading(false);
-  //     }
-  //   };
+        if (!cancelRequest) {
+          // @ts-ignore
+          setVideos(response.contents);
+          setIsLoading(false);
+        }
+      } catch (error: any) {
+        console.error(error);
+        setError(error.message);
+        setIsLoading(false);
+      }
+    };
 
-  //   setIsLoading(true);
-  //   setError(null);
-  //   fetchData();
+    setIsLoading(true);
+    setError(null);
+    fetchData();
 
-  //   return () => {
-  //     document.title = 'YouTube';
-  //   };
-  // }, []);
+    return () => {
+      document.title = 'YouTube';
+    };
+  }, []);
 
   return (
     <>

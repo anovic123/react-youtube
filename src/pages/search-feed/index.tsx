@@ -66,9 +66,9 @@ export const SearchFeed = () => {
         <Loader />
       ) : (
         videos.map((v: any) => (
-          <div>
+          <>
             <VideoCard key={v1()} data={v} />
-          </div>
+          </>
         ))
       )}
     </>

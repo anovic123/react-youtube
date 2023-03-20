@@ -9,7 +9,6 @@ import { HiOutlineThumbUp } from 'react-icons/hi';
 import { RecVideoItem, Loader } from '../../components';
 
 import getVideoInfo from '../../api/youtube-video-info';
-import youtubeRelatedContent from '../../api/youtube-related-contents';
 
 import { convertViews } from '../../utils/common';
 
@@ -17,8 +16,10 @@ import s from './style.module.scss';
 
 export const VideoPage = () => {
   const [data, setData] = useState<any>({});
+  // console.log('🚀 ~ file: index.tsx:19 ~ VideoPage ~ data:', data);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [recVideos, setRecVideos] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+
   const videoId = useParams().id;
 
   const { t } = useTranslation();
@@ -38,6 +39,32 @@ export const VideoPage = () => {
 
   //   return () => {
   //     document.title = 'YouTube';
+  //   };
+  // }, [videoId]);
+
+  let cancelRequest = false;
+
+  // useEffect(() => {
+  //   if (!videoId) return;
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const response: any = await getVideoInfo(videoId);
+
+  //       if (!cancelRequest) {
+  //         document.title = `${response.title} - YouTube`;
+  //         setData(response);
+  //         setIsLoading(false);
+  //       }
+  //     } catch (error: any) {
+  //       console.error(error);
+  //       setError(error.message);
+  //       setIsLoading(false);
+  //     }
+
+  //     setIsLoading(true);
+  //     setError(null);
+  //     fetchData();
   //   };
   // }, [videoId]);
 
@@ -67,7 +94,7 @@ export const VideoPage = () => {
             url={`htpps://www.youtube.com/watch?v=${videoId}`}
             controls
             width={'100%'}
-            height={'520px'}
+            height={'620px'}
           />
         </div>
         <div className={s.videoInfo}>
@@ -100,9 +127,9 @@ export const VideoPage = () => {
           </Link>
         </div>
       </div>
-      <div className={s.videoRecomendation}>
+      {/* <div className={s.videoRecomendation}>
         {isLoading ? <Loader /> : recVideos.map((r) => <RecVideoItem key={v1()} data={r} />)}
-      </div>
+      </div> */}
     </div>
   );
 };

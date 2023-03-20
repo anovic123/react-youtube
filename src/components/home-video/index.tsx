@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
@@ -6,7 +6,7 @@ import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 import s from './style.module.scss';
 
 
-export const HomeVideo: React.FC<any> = ({ video }) => {
+export const HomeVideo: FC<any> = ({ video }) => {
   const { t } = useTranslation();
 
   return (

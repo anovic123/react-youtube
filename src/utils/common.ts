@@ -11,6 +11,9 @@ export const convertViews = (total: number) => {
   const { t } = useTranslation();
   const units = ['', t("utils.util1"), t("utils.util2"), t("utils.util3"), t("utils.util4")];
   let i = 0;
+  if (isNaN(total)) {
+    return '0 ' + units[i];
+  }
   while (total >= 1000 && i < units.length - 1) {
     total /= 1000;
     i++;

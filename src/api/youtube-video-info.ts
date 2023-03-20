@@ -2,7 +2,7 @@ import { api } from '../core/api';
 
 const getVideoInfo = async (videoId: string) => {
   const params = {
-    id: videoId
+    id: videoId,
   }
   try {
     const response = await api.get('video/details/', {

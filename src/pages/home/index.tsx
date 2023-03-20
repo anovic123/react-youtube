@@ -17,29 +17,48 @@ interface ApiResponse {
 
 export const HomePage = () => {
   const [videos, setVideos] = useState<IVideo[]>([]);
+  console.log('🚀 ~ file: index.tsx:20 ~ HomePage ~ videos:', videos);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = 'YouTube - Main Page'
+    setVideos(() => new Array(12));
+  }, []);
 
-    const fetchData = async () => {
-      const response: ApiResponse = await getVideos();
-      // @ts-ignore
-      setVideos(response.contents);
-      setIsLoading(false);
-    }
+  let cancelRequest = false;
 
-    setIsLoading(false);
-    fetchData();
+  // useEffect(() => {
+  //   document.title = 'YouTube - Main Page';
 
-    return () => {
-      document.title = 'YouTube';
-    };
-  }, [])
+  //   const fetchData = async () => {
+  //     try {
+  //       const response: ApiResponse = await getVideos();
+
+  //       if (!cancelRequest) {
+  //         // @ts-ignore
+  //         setVideos(response.contents);
+  //         setIsLoading(false);
+  //       }
+  //     } catch (error: any) {
+  //       console.error(error);
+  //       setError(error.message);
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   setIsLoading(true);
+  //   setError(null);
+  //   fetchData();
+
+  //   return () => {
+  //     document.title = 'YouTube';
+  //   };
+  // }, []);
 
   return (
     <>
       <div className={s.wrapper}>
+        {error && <div>{error}</div>}
         {isLoading ? <Loader /> : videos.map((v: IVideo) => <HomeVideo key={v1()} video={v} />)}
       </div>
     </>

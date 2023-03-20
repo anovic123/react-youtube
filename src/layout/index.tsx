@@ -1,17 +1,20 @@
 import { FC, useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from './Header/Header';
-import { Sidebar } from './Sidebar/Sidebar';
+import { useMediaQuery } from '../hooks';
+import { Header } from './header';
+import { Sidebar } from './sidebar';
 
 export const Layout: FC = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
+  const isMobile = useMediaQuery(600);
+
   return (
     <>
       <Header handleOpen={handleOpen} />
       <main className="app">
-        <Sidebar open={open} handleOpen={handleOpen} />
+        {!isMobile && <Sidebar open={open} handleOpen={handleOpen} />}
         <Outlet />
       </main>
     </>

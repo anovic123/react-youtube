@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import s from './Sidebar.module.scss';
+import s from './style.module.scss';
 import { categoriesF } from '../../utils/contstants';
 
 interface SidebarProps {

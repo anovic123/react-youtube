@@ -22,29 +22,36 @@ interface ApiResponse {
 export const SearchFeed = () => {
   const [result, setResult] = useState<Video[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
   const { searchTerm } = useParams();
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    document.title = `${result} = YouTube`;
+  let cancelRequest = false;
 
-    if (!searchTerm) {
-      return;
-    }
+  useEffect(() => {
+    if (!searchTerm) return;
 
     const fetchData = async () => {
-      const response: ApiResponse = await youtubeSearch(searchTerm);
-      setIsLoading(false);
-      setResult(response.contents);
+      try {
+        const response: ApiResponse = await youtubeSearch(searchTerm);
+
+        if (!cancelRequest) {
+          setResult(response.contents);
+          document.title = `${searchTerm} - YouTube`;
+          setIsLoading(false);
+        }
+      } catch (error: any) {
+        console.error(error);
+        setError(error.message);
+        setIsLoading(false);
+      }
     };
 
     setIsLoading(true);
+    setError(null);
     fetchData();
-
-    return () => {
-      document.title = 'YouTube';
-    };
   }, [searchTerm]);
 
   const videos = result.filter((r: Video) => r.type === 'video');
@@ -54,6 +61,7 @@ export const SearchFeed = () => {
       <h3 style={{ marginBottom: 20, color: 'red' }}>
         {t('search.search1')} <span>{searchTerm}</span>
       </h3>
+      {error && <div>{error}</div>}
       {isLoading ? (
         <Loader />
       ) : (

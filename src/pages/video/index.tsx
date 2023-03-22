@@ -9,6 +9,7 @@ import { HiOutlineThumbUp } from 'react-icons/hi';
 import { RecVideoItem, Loader } from '../../components';
 
 import getVideoInfo from '../../api/youtube-video-info';
+import getRelatedContents from '../../api/youtube-related-contents';
 
 import { convertViews } from '../../utils/common';
 
@@ -18,6 +19,8 @@ import { Video } from '../../common/types/video/Video';
 
 export const VideoPage = () => {
   const [data, setData] = useState<Video>();
+  const [recVideos, setRecVideos] = useState<any>([]);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,11 +35,10 @@ export const VideoPage = () => {
 
     const fetchData = async () => {
       try {
-        const response: any = await getVideoInfo(videoId);
+        const response = await getVideoInfo(videoId);
 
         if (!cancelRequest) {
-          document.title = `${response.title} - YouTube`;
-          setData(response.data);
+          setData(response?.data);
           setIsLoading(false);
         }
       } catch (error: any) {
@@ -48,14 +50,22 @@ export const VideoPage = () => {
     setIsLoading(true);
     setError(null);
     fetchData();
+  }, [videoId]);
 
-    return () => {
-      document.title = 'YouTube';
+  useEffect(() => {
+    if (!videoId) return;
+
+    const fetchData = async () => {
+      try {
+        const res = await getRelatedContents(videoId);
+        setRecVideos(res?.contents);
+      } catch (error: any) {}
     };
+
+    fetchData();
   }, [videoId]);
 
   const viewsCount = convertViews(Number(data?.stats?.views));
-  // @ts-ignore
   const likesCount = convertViews(Number(data?.stats?.likes));
 
   return (
@@ -100,7 +110,8 @@ export const VideoPage = () => {
         </div>
       </div>
       <div className={s.videoRecomendation}>
-        {/* {isLoading ? <Loader /> : recVideos.map((r) => <RecVideoItem key={v1()} data={r} />)} */}
+        {/* @ts-ignore */}
+        {isLoading ? <Loader /> : recVideos.map((r) => <RecVideoItem key={v1()} data={r} />)}
       </div>
     </div>
   );

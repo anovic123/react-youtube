@@ -37,7 +37,8 @@ export interface Badge {
 }
 
 export interface Stats {
-  views: number
+  views: number;
+  likes: number;
 }
 
 export interface Thumbnail {

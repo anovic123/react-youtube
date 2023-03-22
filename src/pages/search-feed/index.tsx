@@ -15,7 +15,6 @@ interface ApiResponse {
 
 export const SearchFeed = () => {
   const [result, setResult] = useState<Video[]>([]);
-  console.log('🚀 ~ file: index.tsx:18 ~ SearchFeed ~ result:', result);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 

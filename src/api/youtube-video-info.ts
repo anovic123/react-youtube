@@ -5,10 +5,10 @@ const getVideoInfo = async (videoId: string) => {
     id: videoId,
   }
   try {
-    const response = await api.get('video/details/', {
+    const response = await api.get(`video/details/`, {
       params
     });
-    return response.data
+    return response
   } catch (error) {
     console.error(error)
   }

@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from '../layout';
-import { ErrorPage } from '../pages/error';
-import { HomePage } from '../pages/home';
-import { SearchFeed } from '../pages/search-feed';
-import { VideoPage } from '../pages/video';
+import { Layout } from '../../components/layout';
+import { ErrorPage } from '../../pages/error';
+import { HomePage } from '../../pages/home';
+import { SearchFeed } from '../../pages/search-feed';
+import { VideoPage } from '../../pages/video';
 
 const PATH = {
   LAYOUT: '/',

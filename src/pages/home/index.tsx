@@ -5,25 +5,18 @@ import { HomeVideo, Loader } from '../../components';
 
 import getVideos from '../../api/youtube-videos';
 
-import { IVideo } from '../../types/Video';
+import { Video } from '../../common/types/video/Video';
 
 import s from './style.module.scss';
 
 interface ApiResponse {
-  data: {
-    contents: IVideo[];
-  };
+    contents: Video[];
 }
 
 export const HomePage = () => {
-  const [videos, setVideos] = useState<IVideo[]>([]);
-  console.log('🚀 ~ file: index.tsx:20 ~ HomePage ~ videos:', videos);
+  const [videos, setVideos] = useState<Video[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setVideos(() => new Array(12));
-  }, []);
 
   let cancelRequest = false;
 
@@ -35,7 +28,6 @@ export const HomePage = () => {
         const response: ApiResponse = await getVideos();
 
         if (!cancelRequest) {
-          // @ts-ignore
           setVideos(response.contents);
           setIsLoading(false);
         }
@@ -59,7 +51,7 @@ export const HomePage = () => {
     <>
       <div className={s.wrapper}>
         {error && <div>{error}</div>}
-        {isLoading ? <Loader /> : videos.map((v: IVideo) => <HomeVideo key={v1()} video={v} />)}
+        {isLoading ? <Loader /> : videos.map((v: any) => <HomeVideo key={v1()} video={v} />)}
       </div>
     </>
   );

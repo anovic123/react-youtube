@@ -14,9 +14,10 @@ import { convertViews } from '../../utils/common';
 
 import s from './style.module.scss';
 
+import { Video } from '../../common/types/video/Video';
+
 export const VideoPage = () => {
-  const [data, setData] = useState<any>({});
-  // console.log('🚀 ~ file: index.tsx:19 ~ VideoPage ~ data:', data);
+  const [data, setData] = useState<Video>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,66 +25,37 @@ export const VideoPage = () => {
 
   const { t } = useTranslation();
 
-  // useEffect(() => {
-  //   if (!videoId) return;
-  //   getVideoInfo(videoId)
-  //     .then((response: any) => {
-  //       setIsLoading(true);
-  //       document.title = `${response.data.title} - YouTube`;
-  //       setData(response.data);
-  //     })
-  //     .catch((error: Error) => {
-  //       console.error(error.message);
-  //     })
-  //     .finally(() => setIsLoading(false));
-
-  //   return () => {
-  //     document.title = 'YouTube';
-  //   };
-  // }, [videoId]);
-
   let cancelRequest = false;
 
-  // useEffect(() => {
-  //   if (!videoId) return;
+  useEffect(() => {
+    if (!videoId) return;
 
-  //   const fetchData = async () => {
-  //     try {
-  //       const response: any = await getVideoInfo(videoId);
+    const fetchData = async () => {
+      try {
+        const response: any = await getVideoInfo(videoId);
 
-  //       if (!cancelRequest) {
-  //         document.title = `${response.title} - YouTube`;
-  //         setData(response);
-  //         setIsLoading(false);
-  //       }
-  //     } catch (error: any) {
-  //       console.error(error);
-  //       setError(error.message);
-  //       setIsLoading(false);
-  //     }
+        if (!cancelRequest) {
+          document.title = `${response.title} - YouTube`;
+          setData(response.data);
+          setIsLoading(false);
+        }
+      } catch (error: any) {
+        console.error(error);
+        setError(error.message);
+        setIsLoading(false);
+      }
+    };
+    setIsLoading(true);
+    setError(null);
+    fetchData();
 
-  //     setIsLoading(true);
-  //     setError(null);
-  //     fetchData();
-  //   };
-  // }, [videoId]);
-
-  // useEffect(() => {
-  //   if (!videoId) return;
-  //   setIsLoading(true);
-  //   youtubeRelatedContent(videoId)
-  //     .then((response: any) => {
-  //       setRecVideos(response.data.contents);
-  //     })
-  //     .catch((error: Error) => {
-  //       console.error(error.message);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, [videoId]);
+    return () => {
+      document.title = 'YouTube';
+    };
+  }, [videoId]);
 
   const viewsCount = convertViews(Number(data?.stats?.views));
+  // @ts-ignore
   const likesCount = convertViews(Number(data?.stats?.likes));
 
   return (
@@ -98,7 +70,7 @@ export const VideoPage = () => {
           />
         </div>
         <div className={s.videoInfo}>
-          <h3>{data.title}</h3>
+          <h3>{data?.title || 'Cute title'}</h3>
           <span>
             <span>{viewsCount}</span> {t('words.word1')}
           </span>
@@ -127,9 +99,9 @@ export const VideoPage = () => {
           </Link>
         </div>
       </div>
-      {/* <div className={s.videoRecomendation}>
-        {isLoading ? <Loader /> : recVideos.map((r) => <RecVideoItem key={v1()} data={r} />)}
-      </div> */}
+      <div className={s.videoRecomendation}>
+        {/* {isLoading ? <Loader /> : recVideos.map((r) => <RecVideoItem key={v1()} data={r} />)} */}
+      </div>
     </div>
   );
 };

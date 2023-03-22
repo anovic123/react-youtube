@@ -5,7 +5,7 @@ import { FaMusic } from 'react-icons/fa';
 import { MdSportsBaseball, MdTheaterComedy } from 'react-icons/md';
 import { AiFillHome } from 'react-icons/ai';
 
-export const categoriesF = [
+export const navCategories = [
   { name: 'sidebar.cat1',  icon: <AiFillHome /> },
   { name: 'sidebar.cat2',  icon: <MdTheaterComedy /> },
   { name: 'sidebar.cat3',  icon: <MdLocalMovies /> },

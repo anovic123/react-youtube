@@ -7,13 +7,7 @@ import { VideoCard, Loader } from '../../components';
 
 import youtubeSearch from '../../api/youtube-search';
 
-interface Video {
-  id: string;
-  title: string;
-  type: string;
-  description: string;
-  thumbnail: string;
-}
+import { Video } from '../../common/types/video/Video';
 
 interface ApiResponse {
   contents: Video[];
@@ -21,6 +15,7 @@ interface ApiResponse {
 
 export const SearchFeed = () => {
   const [result, setResult] = useState<Video[]>([]);
+  console.log('🚀 ~ file: index.tsx:18 ~ SearchFeed ~ result:', result);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -54,7 +49,8 @@ export const SearchFeed = () => {
     fetchData();
   }, [searchTerm]);
 
-  const videos = result.filter((r: Video) => r.type === 'video');
+  // @ts-ignore
+  const videos = result.filter((v: Video) => v.type === 'video');
 
   return (
     <>

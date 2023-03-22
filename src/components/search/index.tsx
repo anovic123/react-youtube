@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
 
 import s from './style.module.scss';
 
@@ -10,12 +10,10 @@ export const Search = () => {
   const [value, setValue] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     value.trim() && navigate(`/search/${value}`);
   };
-
-  const { t } = useTranslation();
 
   useEffect(() => {
     localStorage.setItem('searchValue', value);
@@ -30,7 +28,7 @@ export const Search = () => {
       <form className={s.searchForm} onClick={handleSubmit}>
         <input
           className={s.searchInput}
-          placeholder={t('header.placeholder')}
+          placeholder='Search'
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}

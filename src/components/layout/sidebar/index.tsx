@@ -2,8 +2,9 @@ import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { navCategories } from '../../../common/mocks/navigate';
+
 import s from './style.module.scss';
-import { categoriesF } from '../../utils/contstants';
 
 interface SidebarProps {
   open: boolean;
@@ -30,7 +31,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, handleOpen }) => {
       <aside className={sidebarClass}>
         {open ? (
           <nav className={s.nav}>
-            {categoriesF.map((c) => (
+            {navCategories.map((c) => (
               <a onClick={() => onClick(t(c.name))} key={c.name}>
                 {c.icon}
                 <span>{t(c.name)}</span>
@@ -39,7 +40,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, handleOpen }) => {
           </nav>
         ) : (
           <nav className={s.nav}>
-            {categoriesF.map((c) => (
+            {navCategories.map((c) => (
               <a onClick={() => onClick(t(c.name))} key={c.name}>
                 {c.icon}
               </a>

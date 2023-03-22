@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { BsYoutube, BsLamp } from 'react-icons/bs';
 
-import { SwitchLang, Search } from '../../components';
+import { SwitchLang, Search } from '../../';
 
-import { useMediaQuery } from '../../hooks';
+import { useMediaQuery } from '../../../hooks';
 
 import s from './style.module.scss';
 

@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useMediaQuery } from '../hooks';
+import { useMediaQuery } from '../../hooks';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
 

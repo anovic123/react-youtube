@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { v1 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 
 import { VideoCard, Loader } from '../../components';
@@ -62,7 +61,7 @@ export const SearchFeed = () => {
       ) : (
         videos.map((v: any) => (
           <>
-            <VideoCard key={v1()} data={v} />
+            <VideoCard key={v.video.videoId} data={v} />
           </>
         ))
       )}

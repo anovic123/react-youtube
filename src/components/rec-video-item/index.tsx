@@ -5,7 +5,6 @@ import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 import s from './style.module.scss';
 
 export const RecVideoItem: FC<any> = ({ data }) => {
-  console.log("🚀 ~ file: index.tsx:8 ~ data:", data)
   const d = data.video;
 
   const videoDur = convertDuration(Number(d.lengthSeconds));

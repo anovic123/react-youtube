@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { v1 } from 'uuid';
 
 import { HomeVideo, Loader } from '../../components';
@@ -10,7 +10,7 @@ import { Video } from '../../common/types/video/Video';
 import s from './style.module.scss';
 
 interface ApiResponse {
-    contents: Video[];
+  contents: Video[];
 }
 
 export const HomePage = () => {

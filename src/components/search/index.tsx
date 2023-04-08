@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { FC, useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
@@ -6,7 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 import s from './style.module.scss';
 
-export const Search = () => {
+export const Search: FC = () => {
   const [value, setValue] = useState<string>('');
   const navigate = useNavigate();
 

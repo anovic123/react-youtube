@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -6,7 +6,7 @@ import error from '../../assets/images/404.png';
 
 import s from './style.module.scss';
 
-export const ErrorPage = () => {
+export const ErrorPage: FC = () => {
   useEffect(() => {
     document.title = '404 Not Found';
 

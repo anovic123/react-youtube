@@ -7,20 +7,24 @@ import { RelatedContent } from '../../common/types/home';
 
 import s from './style.module.scss';
 
-export const HomeVideo: FC<{video: RelatedContent}> = ({ video: { video } }) => {
+export const HomeVideo: FC<{ video: RelatedContent }> = ({ video: { video } }) => {
   const { t } = useTranslation();
 
   return (
-    <Link to={`/watch/${video.videoId}`}>
+    <Link to={`/watch/${video?.videoId}`}>
       <div className={s.container}>
         <div className={s.videoPreviewWrapper}>
-          <img className={s.videoPreview} src={video.thumbnails[1].url} />
-          <div className={s.videoDuration}>{convertDuration(video.lengthSeconds)}</div>
+          <img className={s.videoPreview} src={video?.thumbnails[1].url} />
+          <div className={s.videoDuration}>
+            {(video?.lengthSeconds && convertDuration(video?.lengthSeconds)) || '0h 0m'}
+          </div>
         </div>
         <div className={s.videoInfo}>
-          <h2 className={s.videoTitle}>{titleSlice(video.title)}</h2>
+          <h2 className={s.videoTitle}>
+            {(video?.title && titleSlice(video?.title)) || 'Pure title'}
+          </h2>
           <div className={s.otherInfo}>
-            {convertViews(video.stats.views)} {t('words.word1')}
+            {convertViews(video?.stats.views)} {t('words.word1')}
           </div>
         </div>
       </div>

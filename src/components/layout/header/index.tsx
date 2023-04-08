@@ -14,7 +14,7 @@ interface HeaderProps {
   handleOpen: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ handleOpen }) => {
+export const Header: FC<HeaderProps> = ({ handleOpen }) => {
   const isTablet = useMediaQuery(900);
   const isMobile = useMediaQuery(600);
 

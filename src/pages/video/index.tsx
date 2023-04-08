@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
 import { v1 } from 'uuid';
@@ -13,11 +13,11 @@ import getRelatedContents from '../../api/youtube-related-contents';
 
 import { convertViews } from '../../utils/common';
 
-import s from './style.module.scss';
-
 import { Video } from '../../common/types/video/Video';
 
-export const VideoPage = () => {
+import s from './style.module.scss';
+
+export const VideoPage: FC = () => {
   const [data, setData] = useState<Video>();
   const [recVideos, setRecVideos] = useState<any>([]);
 
@@ -25,15 +25,19 @@ export const VideoPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   const videoId = useParams().id;
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
 
   let cancelRequest = false;
 
   useEffect(() => {
-    if (!videoId) return;
-
     const fetchData = async () => {
+      if (videoId === 'undefined' || !videoId) {
+        navigate('/');
+        return;
+      }
+
       try {
         const response = await getVideoInfo(videoId);
 
@@ -45,12 +49,13 @@ export const VideoPage = () => {
         console.error(error);
         setError(error.message);
         setIsLoading(false);
+        navigate('/');
       }
     };
     setIsLoading(true);
     setError(null);
     fetchData();
-  }, [videoId]);
+  }, [videoId, navigate]);
 
   useEffect(() => {
     if (!videoId) return;
@@ -114,7 +119,11 @@ export const VideoPage = () => {
             </div>
           </div>
           <div className={s.videoRecomendation}>
-            {isLoading ? <Loader /> : recVideos.map((r: any) => <RecVideoItem key={v1()} data={r} />)}
+            {isLoading ? (
+              <Loader />
+            ) : (
+              recVideos.map((r: any) => <RecVideoItem key={v1()} data={r} />)
+            )}
           </div>
         </>
       )}

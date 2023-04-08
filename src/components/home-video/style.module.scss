@@ -3,19 +3,23 @@
   height: 250px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 370px) {
+    width: 320px;
+  }
   .videoPreviewWrapper {
     width: 100%;
     height: 180px;
     position: relative;
+    margin-bottom: 10px;
     .videoPreview {
       width: 100%;
-      height: 100%;
+      height: 190px;
       border-radius: 5px;
       object-fit: cover;
     }
     .videoDuration {
       font-family: 'Roboto', 'Arial', sans-serif;
-      bottom: 5px;
+      bottom: -2px;
       right: 5px;
       position: absolute;
       background-color: rgba(0, 0, 0, 0.8);

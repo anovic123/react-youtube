@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { v1 } from 'uuid';
 
 import { VideoCard, Loader } from '../../components';
 
@@ -12,7 +13,7 @@ interface ApiResponse {
   contents: Video[];
 }
 
-export const SearchFeed = () => {
+export const SearchFeed: FC = () => {
   const [result, setResult] = useState<Video[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,15 +57,7 @@ export const SearchFeed = () => {
         {t('search.search1')} <span>{searchTerm}</span>
       </h3>
       {error && <div>{error}</div>}
-      {isLoading ? (
-        <Loader />
-      ) : (
-        videos.map((v: any) => (
-          <>
-            <VideoCard key={v.video.videoId} data={v} />
-          </>
-        ))
-      )}
+      {isLoading ? <Loader /> : videos.map((v: any) => <VideoCard key={v1()} data={v} />)}
     </>
   );
 };

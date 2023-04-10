@@ -10,6 +10,10 @@ import s from './style.module.scss';
 export const HomeVideo: FC<{ video: RelatedContent }> = ({ video: { video } }) => {
   const { t } = useTranslation();
 
+  if (!video) {
+    return null;
+  }
+
   return (
     <Link to={`/watch/${video?.videoId}`}>
       <div className={s.container}>

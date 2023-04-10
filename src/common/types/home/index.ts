@@ -4,7 +4,7 @@ export interface RelatedContents {
 }
 
 export interface RelatedContent {
-  type: string
+  type?: string
   video: Video
 }
 

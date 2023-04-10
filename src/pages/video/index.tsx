@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import ReactPlayer from 'react-player';
 import { v1 } from 'uuid';
+import ReactPlayer from 'react-player';
 
 import { HiOutlineThumbUp } from 'react-icons/hi';
 
@@ -16,6 +16,7 @@ import { convertViews } from '../../utils/common';
 import { Video } from '../../common/types/video/Video';
 
 import s from './style.module.scss';
+import { RelatedContent } from '../../common/types/home';
 
 export const VideoPage: FC = () => {
   const [data, setData] = useState<Video>();
@@ -34,7 +35,7 @@ export const VideoPage: FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (videoId === 'undefined' || !videoId) {
-        navigate('/');
+        navigate('*');
         return;
       }
 
@@ -49,7 +50,7 @@ export const VideoPage: FC = () => {
         console.error(error);
         setError(error.message);
         setIsLoading(false);
-        navigate('/');
+        navigate('*');
       }
     };
     setIsLoading(true);
@@ -122,7 +123,7 @@ export const VideoPage: FC = () => {
             {isLoading ? (
               <Loader />
             ) : (
-              recVideos.map((r: any) => <RecVideoItem key={v1()} data={r} />)
+              recVideos.map((el: RelatedContent) => <RecVideoItem key={v1()} video={el.video} />)
             )}
           </div>
         </>

@@ -21,7 +21,7 @@ export const convertViews = (total: number) => {
   return total.toFixed(2) + ' ' + units[i];
 }
 
-export const titleSlice = ( title: any) => {
+export const titleSlice = ( title: string) => {
   const isFull = title.length < 55;
   const fullText = !isFull ? `${title.slice(0, 55)}...` : title;
 

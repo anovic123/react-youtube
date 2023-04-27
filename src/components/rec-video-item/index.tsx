@@ -1,14 +1,19 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { RelatedContent } from '../../common/types/home';
+import { useNavigate } from 'react-router-dom';
+
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
+
+import { RelatedContentType } from '../../common/types/home';
 
 import s from './style.module.scss';
 
-export const RecVideoItem: FC<RelatedContent> = ({ video }) => {
+export const RecVideoItem: FC<RelatedContentType> = ({ video }) => {
   if (!video) {
     return null;
   }
+
+  const navigate = useNavigate();
 
   const videoDur = convertDuration(Number(video?.lengthSeconds));
   const viewsCount = convertViews(Number(video?.stats?.views));
@@ -16,15 +21,15 @@ export const RecVideoItem: FC<RelatedContent> = ({ video }) => {
   return (
     <div className={s.container}>
       <div className={s.videoWrapper}>
-        <Link to={`/watch/${video.videoId}`}>
+        <a className={s.videoLink} onClick={() => navigate(`/watch/${video.videoId}`)}>
           <img src={video.thumbnails[1].url} className={s.videoImage} alt="Video thumbnail" />
-        </Link>
+        </a>
         <div className={s.videoDuration}>{videoDur}</div>
       </div>
       <div className={s.videoInfo}>
-        <Link to={`watch/${video.videoId}`}>
+        <a className={s.videoLink} onClick={() => navigate(`/watch/${video.videoId}`)}>
           <h3 className={s.videoTitle}>{titleSlice(video.title)}</h3>
-        </Link>
+        </a>
         <Link to="#">
           <span className={s.channelTitle}>{video.author.title}</span>
         </Link>

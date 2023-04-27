@@ -1,9 +1,9 @@
 export interface RelatedContents {
-  contents: RelatedContent[]
+  contents: RelatedContentType[]
   cursorNext: string
 }
 
-export interface RelatedContent {
+export interface RelatedContentType {
   type?: string
   video: Video
 }

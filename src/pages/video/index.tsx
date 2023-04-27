@@ -1,82 +1,39 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { v1 } from 'uuid';
 import ReactPlayer from 'react-player';
 
 import { HiOutlineThumbUp } from 'react-icons/hi';
 
-import { RecVideoItem, Loader } from '../../components';
+import { Loader, RelatedContent } from '../../components';
 
-import getVideoInfo from '../../api/youtube-video-info';
-import getRelatedContents from '../../api/youtube-related-contents';
+import { useFetch } from '../../hooks/useFetch';
 
 import { convertViews } from '../../utils/common';
 
-import { Video } from '../../common/types/video/Video';
-
 import s from './style.module.scss';
-import { RelatedContent } from '../../common/types/home';
 
 export const VideoPage: FC = () => {
-  const [data, setData] = useState<Video>();
-  const [recVideos, setRecVideos] = useState<any>([]);
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-
   const videoId = useParams().id;
+
+  const { data, loading, error } = useFetch(`video/details/?id=${videoId}&hl=en&gl=US`);
+
   const navigate = useNavigate();
 
   const { t } = useTranslation();
 
-  let cancelRequest = false;
-
   useEffect(() => {
-    const fetchData = async () => {
-      if (videoId === 'undefined' || !videoId) {
-        navigate('*');
-        return;
-      }
-
-      try {
-        const response = await getVideoInfo(videoId);
-
-        if (!cancelRequest) {
-          setData(response?.data);
-          setIsLoading(false);
-        }
-      } catch (error: any) {
-        console.error(error);
-        setError(error.message);
-        setIsLoading(false);
-        navigate('*');
-      }
-    };
-    setIsLoading(true);
-    setError(null);
-    fetchData();
-  }, [videoId, navigate]);
-
-  useEffect(() => {
-    if (!videoId) return;
-
-    const fetchData = async () => {
-      try {
-        const res = await getRelatedContents(videoId);
-        setRecVideos(res?.contents);
-      } catch (error: any) {}
-    };
-
-    fetchData();
-  }, [videoId]);
+    if (videoId === 'undefined' || !videoId) {
+      return navigate('*');
+    }
+  }, [videoId])
 
   const viewsCount = convertViews(Number(data?.stats?.views));
   const likesCount = convertViews(Number(data?.stats?.likes));
 
   return (
     <div className={s.container}>
-      {isLoading ? (
+      {loading ? (
         <Loader />
       ) : (
         <>
@@ -119,13 +76,11 @@ export const VideoPage: FC = () => {
               </Link>
             </div>
           </div>
-          <div className={s.videoRecomendation}>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              recVideos.map((el: RelatedContent) => <RecVideoItem key={v1()} video={el.video} />)
-            )}
-          </div>
+          {videoId && (
+            <div className={s.videoRecomendation}>
+              <RelatedContent id={videoId} />
+            </div>
+          )}
         </>
       )}
     </div>

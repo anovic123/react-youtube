@@ -17,6 +17,7 @@ export interface Video {
   thumbnails: Thumbnail[]
   title: string
   videoId: string
+  type?: string;
 }
 
 export interface Author {

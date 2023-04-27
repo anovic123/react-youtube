@@ -1,13 +1,18 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
 import { convertDuration, convertViews, titleSlice } from '../../utils/common';
 
-import { RelatedContent } from '../../common/types/home';
+import { RelatedContentType } from '../../common/types/home';
 
 import s from './style.module.scss';
 
-export const HomeVideo: FC<{ video: RelatedContent }> = ({ video: { video } }) => {
+interface HomeVideoProps {
+  video: RelatedContentType;
+}
+
+export const HomeVideo: FC<HomeVideoProps> = ({ video: { video } }) => {
   const { t } = useTranslation();
 
   if (!video) {

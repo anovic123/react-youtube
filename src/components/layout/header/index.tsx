@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { BsYoutube, BsLamp } from 'react-icons/bs';
+import { BsYoutube } from 'react-icons/bs';
 
 import { SwitchLang, Search } from '../../';
 

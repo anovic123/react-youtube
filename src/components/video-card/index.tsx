@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ContentVideo, Video } from '../../common/types/video/Video';
+
+import { ContentVideo } from '../../common/types/video/Video';
 
 import s from './style.module.scss';
 

@@ -1,55 +1,31 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { v1 } from 'uuid';
 
 import { VideoCard, Loader } from '../../components';
 
-import youtubeSearch from '../../api/youtube-search';
+import { ContentVideo, Video } from '../../common/types/video/Video';
 
-import { Video } from '../../common/types/video/Video';
-
-interface ApiResponse {
-  contents: Video[];
-}
+import { useFetch } from '../../hooks/useFetch';
 
 export const SearchFeed: FC = () => {
-  const [result, setResult] = useState<Video[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
 
   const { searchTerm } = useParams();
 
   const { t } = useTranslation();
 
-  let cancelRequest = false;
+  const { data, error, loading } = useFetch(`search/?q=${searchTerm}&hl=en&gl=US&type=video`);
 
   useEffect(() => {
-    if (!searchTerm) return;
+    document.title = `${searchTerm} - YouTube`;
 
-    const fetchData = async () => {
-      try {
-        const response: ApiResponse = await youtubeSearch(searchTerm);
-
-        if (!cancelRequest) {
-          setResult(response.contents);
-          document.title = `${searchTerm} - YouTube`;
-          setIsLoading(false);
-        }
-      } catch (error: any) {
-        console.error(error);
-        setError(error.message);
-        setIsLoading(false);
-      }
+    return () => {
+      document.title = 'YouTube';
     };
+  }, []);
 
-    setIsLoading(true);
-    setError(null);
-    fetchData();
-  }, [searchTerm]);
-
-  // @ts-ignore
-  const videos = result.filter((v: Video) => v.type === 'video');
+  const videos = data?.contents?.filter((v: Video) => v.type === 'video');
 
   return (
     <>
@@ -57,7 +33,7 @@ export const SearchFeed: FC = () => {
         {t('search.search1')} <span>{searchTerm}</span>
       </h3>
       {error && <div>{error}</div>}
-      {isLoading ? <Loader /> : videos.map((v: any) => <VideoCard key={v1()} data={v} />)}
+      {loading ? <Loader /> : videos?.map((v: ContentVideo) => <VideoCard key={v1()} data={v} />)}
     </>
   );
 };

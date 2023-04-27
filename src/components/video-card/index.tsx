@@ -2,19 +2,19 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ContentVideo } from '../../common/types/video/Video';
+import { convertDuration } from '../../utils/common';
 
 import s from './style.module.scss';
 
-export const VideoCard: FC<{data: ContentVideo}> = ({ data: { video } }) => {
+interface VideoCardProps {
+  data: ContentVideo;
+}
 
+export const VideoCard: FC<VideoCardProps> = ({ data: { video } }) => {
   return (
     <div className={s.container}>
       <Link to={`/watch/${video.videoId}`}>
-        <img
-          src={video.thumbnails[0].url}
-          alt="video thumbnail"
-          className={s.videoThumbnail}
-        />
+        <img src={video.thumbnails[0].url} alt="video thumbnail" className={s.videoThumbnail} />
       </Link>
       <div className={s.videoInfo}>
         <Link to={`/watch/${video.videoId}`}>
